@@ -126,12 +126,12 @@ class Scene extends React.Component {
   render() {
     return (
       <>
-      <div className="text-xl border border-purple-400 bg-purple-200 -z-10">
+      <div className="text-xl border border-purple-400 bg-purple-200 -z-10 flex flex-1 w-screen justify-between">
         Seconds Survived = {this.state.timer}
-        <span className="ml-[20rem]">
+        <span>
           Press SpaceBar or left Mouse Button to play
         </span>
-        <span className="ml-[29rem] text-sm">Built By: Jai Gupta</span>
+        <span className="text-sm pr-10">Built By: Jai Gupta</span>
       </div>
       {this.state.didCollide === true ? (
         <div onClick={()=>{
