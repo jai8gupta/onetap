@@ -136,7 +136,7 @@ class Scene extends React.Component {
       {this.state.didCollide === true ? (
         <div onClick={()=>{
             window.location.reload()          
-        }} className={`h-8 w-36 pl-5 text-xl border border-green-500 text-white bg-green-400 absolute -z-10 rounded-r-lg`}>
+        }} className={`h-8 w-36 pl-5 cursor-pointer text-xl border border-green-500 text-white bg-green-400 absolute -z-10 rounded-r-lg`}>
           Play Again
         </div> 
        ) :  null
