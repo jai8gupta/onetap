@@ -63,8 +63,7 @@ class Scene extends React.Component {
     
     let MoveObstacle = setInterval(()=>{
       let option = Math.round(Math.random()*(2-1)+1)
-      let randomColor = Math.floor(Math.random()*16777215).toString(16);
-      randomColor = "#"+randomColor
+      let randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
       if (option === 1) {
         let obs = Obstacle(-100,window.innerHeight, World, engine, this.player, true, randomColor)
         World.add(engine.world, obs)
@@ -95,6 +94,7 @@ class Scene extends React.Component {
           clearInterval(MoveObstacle)
           clearInterval(timer)
         }
+        
       }
       if (this.player.isStatic === true) {
         this.setState({didCollide: true})
@@ -102,18 +102,28 @@ class Scene extends React.Component {
         clearInterval(MoveObstacle)
         clearInterval(timer)
       }
+      if (this.player.position.y < 0) {
+        engine.world.bodies.forEach((key)=>{
+          key.isStatic = true
+        })
+          this.setState({didCollide: true}) 
+          clearInterval(HittingFloor)
+          clearInterval(MoveObstacle)
+          clearInterval(timer)
+        }
       
     },this.fps)
 
     // Keyboard Listener
     window.addEventListener("keydown",(e) => {
-      
+      e.preventDefault()
       if(e.code === "Space"){
         this.player.force.y = -0.05
         
       }
     })
     window.addEventListener("click",(e) => {
+      e.preventDefault()
         this.player.force.y = -0.05
     })
 
